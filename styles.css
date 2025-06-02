@@ -469,17 +469,17 @@ body {
     right: 24px;
     width: 60px;
     height: 60px;
-    /* Premium gradient background inspired by Apple branding */
-    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 50%, #1a1a1a 100%);
+    /* Brand color for @estiloapple.sj */
+    background: #4c131b;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    /* Premium shadow effect */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 
-                0 4px 16px rgba(255, 255, 255, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    /* Premium shadow effect with brand color */
+    box-shadow: 0 8px 24px rgba(76, 19, 27, 0.4), 
+                0 4px 16px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -498,14 +498,14 @@ body {
 
 .whatsapp-float:hover {
     transform: scale(1.1);
-    /* Enhanced glow on hover */
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 
-                0 6px 20px rgba(255, 255, 255, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    /* Enhanced glow on hover with brand color */
+    box-shadow: 0 12px 32px rgba(76, 19, 27, 0.6), 
+                0 6px 20px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
     /* Brightness effect */
     filter: brightness(1.1);
-    /* Slightly lighter gradient on hover */
-    background: linear-gradient(135deg, #2c2c2c 0%, #3a3a3a 50%, #2c2c2c 100%);
+    /* Slightly lighter version of brand color on hover */
+    background: #5d1722;
 }
 
 .whatsapp-float:active {
@@ -526,15 +526,15 @@ body {
 @keyframes whatsappPulse {
     0%, 100% {
         transform: scale(1);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 
-                    0 4px 16px rgba(255, 255, 255, 0.1),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 24px rgba(76, 19, 27, 0.4), 
+                    0 4px 16px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
     50% {
         transform: scale(1.05);
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 
-                    0 6px 20px rgba(255, 255, 255, 0.2),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        box-shadow: 0 12px 32px rgba(76, 19, 27, 0.6), 
+                    0 6px 20px rgba(0, 0, 0, 0.4),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
 }
 
@@ -583,12 +583,12 @@ body {
     .whatsapp-float {
         bottom: 20px;
         right: 20px;
-        width: 52px;
-        height: 52px;
+        width: 56px;
+        height: 56px;
     }
     
     .whatsapp-float i {
-        font-size: 26px;
+        font-size: 22px;
     }
     
     .video-container {
@@ -686,12 +686,12 @@ body {
     .whatsapp-float {
         bottom: 16px;
         right: 16px;
-        width: 48px;
-        height: 48px;
+        width: 52px;
+        height: 52px;
     }
     
     .whatsapp-float i {
-        font-size: 24px;
+        font-size: 20px;
     }
     
     .video-container {

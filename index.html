@@ -38,18 +38,13 @@
         
         <!-- Video Section -->
         <div class="video-section">
-            <div class="video-container">
-                <div class="video-frame">
-                    <iframe 
-                        src="https://www.youtube.com/embed/9HBvGTdwgAg?autoplay=1&mute=1&loop=1&playlist=9HBvGTdwgAg" 
-                        title="Apple Innovation Video"
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="video-glow"></div>
-            </div>
+            <iframe 
+                src="https://www.youtube.com/embed/wWFhVCJxdaA?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&showinfo=0" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                class="youtube-video">
+            </iframe>
         </div>
         
         <!-- CTA Section -->
@@ -104,5 +99,21 @@
     <footer class="site-footer" aria-label="Pie de página">
         <p class="footer-text">© Growth 360 - Franco Luciano Aballay</p>
     </footer>
+
+    <style>
+        .video-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .youtube-video {
+            width: 100%;
+            aspect-ratio: 21/9;
+            border-radius: 18px;
+            box-shadow: 0 0 100px rgba(76, 19, 27, 0.3);
+        }
+    </style>
 </body>
 </html> 
