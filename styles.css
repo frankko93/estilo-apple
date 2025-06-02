@@ -545,10 +545,6 @@ body {
         border-radius: 17px;
     }
     
-    .about-section {
-        margin-top: 300px;
-    }
-    
     .about-container {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -606,7 +602,7 @@ body {
     }
     
     .hero-section {
-        margin-top: 100px;
+        margin-top: 130px;
         margin-bottom: 120px;
     }
     
@@ -651,10 +647,6 @@ body {
     
     .floating-icon {
         display: none;
-    }
-    
-    .about-section {
-        margin-top: 340px;
     }
     
     .about-container {
