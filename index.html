@@ -3,120 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El secreto que Apple no quiere que sepas sobre las reparaciones originales</title>
-    
-    <!-- Custom Fonts -->
-    <link href="https://fonts.cdnfonts.com/css/orelo-extended-trial" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6D16FWQ485"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-MMFYESY338');
-    </script>
-</head>
-<body>
-    <main class="container">
-        <!-- Hero Section -->
-        <div class="hero-section">
-            <!-- Main Title -->
-            <h1 class="main-title mixed-style">
-                <span class="highlight"><span class="bigger-text">EL SECRETO</span> que Apple</span><br>
-                <span class="subtle">no quiere que sepas sobre las </span><span class="highlight">reparaciones originales</span> <i class="fab fa-apple apple-icon"></i>
-            </h1>
-        </div>
-        
-        <!-- Video Section -->
-        <div class="video-section">
-            <iframe 
-                src="https://www.youtube.com/embed/wWFhVCJxdaA?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&showinfo=0" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen
-                class="youtube-video">
-            </iframe>
-        </div>
-        
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <a href="https://wa.me/message/URPJOMQIADZMP1" target="_blank" class="cta-button">
-                <i class="fab fa-whatsapp"></i>
-                <span>¡Consultá con nosotros!</span>
-            </a>
-        </div>
-        
-        <!-- About Us Section -->
-        <div class="about-section">
-            <div class="about-container">
-                <div class="about-logo">
-                    <div class="logo-container">
-                        <img src="images/logo1.png" alt="Estilo Apple Logo">
-                    </div>
-                </div>
-                <div class="about-content">
-                    <h2 class="about-title"></h2>
-                    <p class="about-description">
-                        Somos Estilo, una empresa familiar que entiende cuánto significa tu iPhone para vos.
-                        Hace más de 10 años nos dedicamos a cuidarlos como si fueran nuestros: con repuestos originales y con las mejores marcas del mercado, atención personalizada y un compromiso real con la calidad. 
-                        Nuestro propósito es simple: que cada persona que nos elige se lleve más que un servicio… se lleve confianza.
-                        <span class="signature">Bienvenidos/as a Estilo.</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Social Media Section -->
-        <div class="social-section">
-            <div class="social-buttons">
-                <a href="https://www.instagram.com/estiloapple.sj/" target="_blank" class="social-btn instagram" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://wa.me/message/URPJOMQIADZMP1" target="_blank" class="social-btn whatsapp" aria-label="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://www.tiktok.com/@estiloapple.sj" target="_blank" class="social-btn tiktok" aria-label="TikTok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://www.youtube.com/@estiloenyoutube" target="_blank" class="social-btn youtube" aria-label="YouTube">
-                    <i class="fab fa-youtube"></i>
-                </a>
-            </div>
-        </div>
-    </main>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/message/URPJOMQIADZMP1" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <footer class="site-footer" aria-label="Pie de página">
-        <p class="footer-text">© Growth 360 - Franco Aballay</p>
-    </footer>
-
+    <title>Growth360</title>
     <style>
-        .video-section {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .youtube-video {
-            width: 100%;
-            aspect-ratio: 21/9;
-            border-radius: 18px;
-            box-shadow: 0 0 100px rgba(76, 19, 27, 0.3);
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #F4EEDE;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
         }
     </style>
+</head>
+<body>
+    <div class="container">
+        <img src="images/logo.png" alt="Growth360 Logo" class="logo">
+    </div>
 </body>
 </html> 
