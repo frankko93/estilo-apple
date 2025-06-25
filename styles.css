@@ -7,9 +7,8 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
-    background: linear-gradient(160deg, #000000 0%, #040404 100%);
-    color: #f5f5f7;
+    font-family: 'Questrial', sans-serif;
+    color: #51141B;
     line-height: 1.47059;
     min-height: 100vh;
     position: relative;
@@ -17,47 +16,8 @@ body {
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-/* Background floating elements */
-.background-elements {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.floating-icon {
-    position: absolute;
-    opacity: 0.06;
-    animation: appleFloat 8s ease-in-out infinite;
-}
-
-.floating-icon i {
-    font-size: 1.5rem;
-    color: #d1d1d6;
-    filter: drop-shadow(0 0 1px #aaa);
-}
-
-.icon-1 { top: 12%; left: 8%; animation-delay: 0s; }
-.icon-2 { top: 25%; right: 12%; animation-delay: 2s; }
-.icon-3 { top: 65%; left: 6%; animation-delay: 4s; }
-.icon-4 { top: 75%; right: 8%; animation-delay: 6s; }
-.icon-5 { top: 45%; left: 4%; animation-delay: 1s; }
-.icon-6 { top: 35%; right: 5%; animation-delay: 3s; }
-
-@keyframes appleFloat {
-    0%, 100% { 
-        transform: translateY(0px) translateX(0px);
-        opacity: 0.03;
-    }
-    50% { 
-        transform: translateY(-15px) translateX(5px);
-        opacity: 0.06;
-    }
+    background: url('images/hero.png') no-repeat center center fixed;
+    background-size: cover;
 }
 
 /* Main container */
@@ -82,79 +42,206 @@ body {
     width: 100%;
     flex-shrink: 0;
     margin-top: 50px;
+    padding: 80px 20px;
 }
 
 /* Main Title */
 .main-title {
-    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", system-ui, sans-serif;
+    font-family: 'Orelo Extended Trial', serif;
     font-size: clamp(48px, 8vw, 96px);
     font-weight: 500;
-    color: #f5f5f7;
+    color: #51141B;
     text-align: center;
     line-height: 1.05;
     letter-spacing: -0.02em;
     margin: 0;
-    animation: appleSlideUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+    text-shadow: 0 4px 12px rgba(209, 193, 178, 0.6),
+                 0 1px 2px rgba(244, 238, 222, 0.9);
+    filter: drop-shadow(0 8px 16px rgba(81, 20, 27, 0.2));
 }
 
-/* OPCIÓN 4: Jerarquía Mixta */
+/* Main Title Styles */
 .main-title.mixed-style {
     font-weight: 300;
-    color: #f5f5f7;
+    color: #51141B;
     max-width: 1000px;
-    margin: 0 auto 1em;
+    margin: 0 auto;
     text-align: center;
     letter-spacing: -0.02em;
-    font-size: clamp(40px, 4vw, 72px);
-    line-height: 1.1;
+    font-size: clamp(36px, 5vw, 68px);
+    line-height: 1.3;
+    text-shadow: 
+        6px 6px 25px #F4EEDE,
+        -6px -6px 25px #F4EEDE,
+        0 0 40px #F4EEDE;
 }
 
 .main-title.mixed-style .highlight {
     font-weight: 700;
-    background: linear-gradient(135deg, #f5f5f7 0%, #d1d1d6 50%, #a1a1a6 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #51141B;
     display: inline-block;
+    text-shadow: 
+        6px 6px 25px #F4EEDE,
+        -6px -6px 25px #F4EEDE,
+        0 0 40px #F4EEDE;
 }
 
 .main-title.mixed-style .subtle {
     font-weight: 300;
-    color: #a1a1a6;
+    color: #51141B;
     font-size: 0.85em;
-    letter-spacing: -0.01em;
+    display: block;
+    margin: 15px 0;
+    text-shadow: 
+        6px 6px 25px #F4EEDE,
+        -6px -6px 25px #F4EEDE,
+        0 0 40px #F4EEDE;
 }
 
-/* Apple Icon in Title */
-.apple-icon {
-    background: linear-gradient(135deg, #f5f5f7 0%, #d1d1d6 50%, #a1a1a6 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 0.9em;
-    margin-left: 0.2em;
-    display: inline-block;
-    filter: drop-shadow(0 0 20px rgba(245, 245, 247, 0.3));
-    animation: appleIconGlow 3s ease-in-out infinite;
+.main-title.mixed-style .apple-icon {
+    font-size: 0.85em;
+    vertical-align: middle;
+    margin-left: 5px;
+    color: #51141B;
+    text-shadow: 
+        6px 6px 25px #F4EEDE,
+        -6px -6px 25px #F4EEDE,
+        0 0 40px #F4EEDE;
 }
 
-@keyframes appleIconGlow {
-    0%, 100% {
-        filter: drop-shadow(0 0 20px rgba(245, 245, 247, 0.3));
-        transform: scale(1);
-    }
-    50% {
-        filter: drop-shadow(0 0 30px rgba(245, 245, 247, 0.5));
-        transform: scale(1.05);
-    }
+/* Video Section */
+.video-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.youtube-video {
+    width: 100%;
+    aspect-ratio: 21/9;
+    border-radius: 18px;
+    box-shadow: 0 0 100px rgba(81, 20, 27, 0.3);
+}
+
+/* About Section */
+.about-section {
+    width: 100%;
+    padding: 40px 0;
+}
+
+.about-container {
+    background: rgba(244, 238, 222, 0.8);
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-container img {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-family: 'Orelo Extended Trial', serif;
+    font-size: 1.8rem;
+    color: #51141B;
+    letter-spacing: -0.02em;
+}
+
+.about-content {
+    text-align: center;
+}
+
+.about-title {
+    font-family: 'Orelo Extended Trial', serif;
+    font-size: 2.5rem;
+    color: #51141B;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+}
+
+.about-description {
+    font-family: 'Questrial', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #51141B;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-description .signature {
+    display: block;
+    margin-top: 20px;
+    font-family: 'Orelo Extended Trial', serif;
+    font-size: 1.3rem;
+    color: #51141B;
+}
+
+/* Social Media Section */
+.social-section {
+    width: 100%;
+    padding: 40px 0;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #51141B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-btn i {
+    font-size: 24px;
+    color: #F4EEDE;
+}
+
+.social-btn:hover {
+    transform: translateY(-5px);
+}
+
+/* Footer */
+.site-footer {
+    background: #51141B;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-text {
+    color: #F4EEDE;
+    font-size: 0.9rem;
 }
 
 /* CTA Section */
 .cta-section {
-    margin-top: 0;
-    text-align: center;
     width: 100%;
-    animation: appleSlideUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.9s both;
+    text-align: center;
+    margin: 20px 0;
 }
 
 .cta-button {
@@ -162,721 +249,176 @@ body {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    padding: 14px 28px;
-    background: #4c131b;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 18px 36px;
+    background: #51141B;
+    border: none;
     border-radius: 980px;
-    color: #f5f5f7;
+    color: #F4EEDE;
     text-decoration: none;
-    font-size: 17px;
-    font-weight: 400;
+    font-size: 20px;
+    font-weight: 600;
     letter-spacing: -0.022em;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(76, 19, 27, 0.4);
-}
-
-.cta-button i {
-    font-size: 18px;
-    color: #f5f5f7;
-}
-
-.cta-button:hover {
-    background: #5d1722;
-    border-color: rgba(255, 255, 255, 0.25);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(76, 19, 27, 0.6);
-}
-
-.cta-button:active {
-    transform: translateY(0);
-}
-
-@keyframes appleSlideUp {
-    0% { 
-        opacity: 0; 
-        transform: translateY(40px);
-    }
-    100% { 
-        opacity: 1; 
-        transform: translateY(0);
-    }
-}
-
-/* Video Section */
-.video-section {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 1000px;
-    margin: 0 auto;
-    margin-bottom: 80px;
-}
-
-/* About Us Section */
-.about-section {
-    width: 100%;
-    max-width: 1000px;
-    margin-top: 150px;
-    animation: appleSlideUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2s both;
-}
-
-.about-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 60px;
-    align-items: center;
-    padding: 40px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 18px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.about-container:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.12);
-    transform: translateY(-2px);
-}
-
-.about-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-}
-
-.logo-container i {
-    font-size: 72px;
-    color: #f5f5f7;
-    filter: drop-shadow(0 0 20px rgba(245, 245, 247, 0.3));
-}
-
-.logo-text {
-    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    font-size: 24px;
-    font-weight: 600;
-    color: #f5f5f7;
-    letter-spacing: -0.01em;
-}
-
-.about-content {
-    text-align: left;
-}
-
-.about-title {
-    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    font-size: clamp(32px, 4vw, 48px);
-    font-weight: 600;
-    color: #f5f5f7;
-    margin-bottom: 24px;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-}
-
-.about-description {
-    font-size: clamp(17px, 2.5vw, 20px);
-    line-height: 1.5;
-    color: #d2d2d5;
-    margin: 0;
-    letter-spacing: -0.009em;
-    font-weight: 400;
-    white-space: pre-line;
-}
-
-.about-description .signature {
-    display: block;
-    margin-top: 1.5em;
-    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    font-style: italic;
-    font-weight: 500;
-    color: #f5f5f7;
-    font-size: 1.1em;
-    letter-spacing: -0.02em;
-    text-align: right;
-    opacity: 0.9;
-    transition: all 0.3s ease;
-}
-
-.about-description .signature:hover {
-    opacity: 1;
-    transform: scale(1.02);
-    text-shadow: 0 0 20px rgba(245, 245, 247, 0.2);
-}
-
-/* Social Media Section */
-.social-section {
-    width: 100%;
-    max-width: 400px;
-    margin-top: 60px;
-    animation: appleSlideUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.5s both;
-}
-
-.social-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-}
-
-.social-btn {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.social-btn i {
-    font-size: 24px;
-    transition: all 0.3s ease;
-}
-
-.social-btn.instagram {
-    background: linear-gradient(45deg, #E4405F, #5B51D8, #833AB4);
-    box-shadow: 0 4px 16px rgba(228, 64, 95, 0.3);
-}
-
-.social-btn.instagram i {
-    color: #ffffff;
-}
-
-.social-btn.instagram:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 24px rgba(228, 64, 95, 0.5);
-    filter: brightness(1.1);
-}
-
-.social-btn.tiktok {
-    background: #000000;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-}
-
-.social-btn.tiktok i {
-    color: #ffffff;
-}
-
-.social-btn.tiktok:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-    background: #121212;
-}
-
-.social-btn.youtube {
-    background: #FF0000;
-    box-shadow: 0 4px 16px rgba(255, 0, 0, 0.3);
-}
-
-.social-btn.youtube i {
-    color: #ffffff;
-}
-
-.social-btn.youtube:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 24px rgba(255, 0, 0, 0.5);
-    background: #CC0000;
-}
-
-.social-btn.whatsapp {
-    background: #25D366;
-    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
-}
-
-.social-btn.whatsapp i {
-    color: #ffffff;
-}
-
-.social-btn.whatsapp:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
-    background: #22C55E;
-}
-
-/* Site Footer */
-.site-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 25px 0 20px 0;
-    text-align: center;
-    margin-top: 60px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 24px rgba(81, 20, 27, 0.3);
     position: relative;
+    overflow: hidden;
 }
 
-.site-footer::before {
+.cta-button::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(244, 238, 222, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: 0.5s;
 }
 
-.footer-text {
-    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", system-ui, sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    color: #a1a1a6;
-    margin: 0;
-    letter-spacing: 0.01em;
-    transition: all 0.3s ease;
+.cta-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(81, 20, 27, 0.4);
+    background: #832530;
 }
 
-.footer-text:hover {
-    color: #d1d1d6;
+.cta-button:hover::before {
+    transform: translateX(100%);
 }
 
-/* WhatsApp Floating Button */
+.cta-button i {
+    font-size: 22px;
+    color: #F4EEDE;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover i {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* WhatsApp Float */
 .whatsapp-float {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
     width: 60px;
     height: 60px;
-    /* Brand color for @estiloapple.sj */
-    background: #4c131b;
-    border-radius: 50%;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25D366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
-    /* Premium shadow effect with brand color */
-    box-shadow: 0 8px 24px rgba(76, 19, 27, 0.4), 
-                0 4px 16px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation: whatsappSlideUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2s both, whatsappPulse 3s ease-in-out infinite 3s;
-    /* Apple-style backdrop blur effect */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.whatsapp-float i {
-    font-size: 24px;
-    color: #ffffff;
-    /* Add subtle glow to the icon */
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: pulseWhatsApp 2s infinite;
 }
 
 .whatsapp-float:hover {
-    transform: scale(1.1);
-    /* Enhanced glow on hover with brand color */
-    box-shadow: 0 12px 32px rgba(76, 19, 27, 0.6), 
-                0 6px 20px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    /* Brightness effect */
-    filter: brightness(1.1);
-    /* Slightly lighter version of brand color on hover */
-    background: #5d1722;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
 }
 
-.whatsapp-float:active {
-    transform: scale(0.95);
+.whatsapp-float i {
+    font-size: 30px;
+    color: #FFF;
+    transition: transform 0.3s ease;
 }
 
-@keyframes whatsappSlideUp {
+.whatsapp-float:hover i {
+    transform: rotate(10deg);
+}
+
+@keyframes pulseWhatsApp {
     0% {
-        opacity: 0;
-        transform: translateY(60px) scale(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes whatsappPulse {
-    0%, 100% {
         transform: scale(1);
-        box-shadow: 0 8px 24px rgba(76, 19, 27, 0.4), 
-                    0 4px 16px rgba(0, 0, 0, 0.3),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
     }
     50% {
         transform: scale(1.05);
-        box-shadow: 0 12px 32px rgba(76, 19, 27, 0.6), 
-                    0 6px 20px rgba(0, 0, 0, 0.4),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
     }
 }
 
-/* Responsive Design */
+/* Responsive Styles */
 @media (max-width: 1068px) {
     .container {
-        max-width: 900px;
-        padding: 0 30px;
-        gap: 40px;
-    }
-    
-    .main-title {
-        font-size: clamp(44px, 7vw, 82px);
-        line-height: 1.2;
-    }
-
-    .hero-section {
-        margin-top: 80px;
-        margin-bottom: 60px;
-    }
-    
-    .video-container {
-        max-width: 800px;
-    }
-
-    .about-container {
-        padding: 50px;
-    }
-
-    .about-description {
-        font-size: clamp(18px, 2.5vw, 20px);
-    }
-
-    .main-title.mixed-style {
-        max-width: 90%;
-        font-size: clamp(36px, 4.5vw, 56px);
-        line-height: 1.15;
+        padding: 0 15px;
+        gap: 60px;
     }
 }
 
 @media (max-width: 834px) {
     .container {
-        padding: 0 24px;
-        gap: 50px;
-    }
-    
-    .main-title {
-        font-size: clamp(38px, 6vw, 64px);
-        line-height: 1.3;
-    }
-    
-    .hero-section {
-        margin-top: 60px;
-        margin-bottom: 40px;
-    }
-    
-    .cta-section {
-        margin-top: 20px;
-    }
-    
-    .cta-button {
-        padding: 14px 28px;
-        font-size: 17px;
-        gap: 12px;
-    }
-    
-    .cta-button i {
-        font-size: 18px;
-    }
-    
-    .whatsapp-float {
-        bottom: 24px;
-        right: 24px;
-        width: 58px;
-        height: 58px;
-    }
-    
-    .whatsapp-float i {
-        font-size: 24px;
+        gap: 40px;
     }
     
     .about-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 40px;
-        text-align: center;
-        margin-top: 40px;
-    }
-    
-    .about-content {
-        text-align: center;
-    }
-    
-    .about-title {
-        font-size: clamp(32px, 5vw, 42px);
-        margin-bottom: 30px;
-    }
-    
-    .about-description {
-        font-size: clamp(17px, 2.5vw, 19px);
-        line-height: 1.6;
-        max-width: 600px;
-        margin: 0 auto;
-    }
-    
-    .logo-container i {
-        font-size: 64px;
-    }
-    
-    .logo-text {
-        font-size: 22px;
-    }
-    
-    .social-section {
-        margin-top: 40px;
-        max-width: 500px;
-    }
-    
-    .social-buttons {
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .social-btn {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .social-btn i {
-        font-size: 24px;
-    }
-
-    .main-title.mixed-style {
-        max-width: 85%;
-        font-size: clamp(32px, 5vw, 48px);
-        line-height: 1.2;
-    }
-    
-    .main-title.mixed-style .subtle {
-        font-size: 0.8em;
+        padding: 30px;
     }
 }
 
 @media (max-width: 430px) {
     .container {
-        padding: 0 20px;
-        gap: 40px;
+        gap: 30px;
     }
     
-    .main-title {
-        font-size: clamp(32px, 7vw, 42px);
-        line-height: 1.3;
-        padding: 0 10px;
-    }
-
-    .main-title.mixed-style {
-        max-width: 95%;
-        font-size: clamp(24px, 6vw, 32px);
-        line-height: 1.3;
-    }
-
-    .main-title.mixed-style .highlight {
-        display: inline;
-    }
-
-    .main-title.mixed-style .subtle {
-        font-size: 0.75em;
+    .about-container {
+        padding: 20px;
     }
     
-    .hero-section {
-        margin-top: 40px;
-        margin-bottom: 30px;
+    .social-btn {
+        width: 50px;
+        height: 50px;
     }
     
-    .cta-section {
-        margin-top: 10px;
-        width: 100%;
-    }
-    
-    .cta-button {
-        padding: 12px 24px;
-        font-size: 16px;
-        gap: 10px;
-        width: 100%;
-        max-width: 300px;
+    .social-btn i {
+        font-size: 20px;
     }
     
     .whatsapp-float {
+        width: 50px;
+        height: 50px;
         bottom: 20px;
         right: 20px;
-        width: 54px;
-        height: 54px;
     }
     
     .whatsapp-float i {
-        font-size: 22px;
+        font-size: 26px;
     }
     
-    .about-container {
-        padding: 30px 20px;
-        gap: 30px;
-        margin-top: 30px;
-        border-radius: 14px;
-    }
-    
-    .about-title {
-        font-size: clamp(28px, 6vw, 32px);
-        margin-bottom: 20px;
-    }
-    
-    .about-description {
-        font-size: 16px;
-        line-height: 1.6;
-        letter-spacing: -0.01em;
-        white-space: pre-line;
-    }
-
-    .about-description .signature {
-        font-size: 1.15em;
-        margin-top: 1.2em;
-    }
-    
-    .logo-container i {
-        font-size: 52px;
-    }
-    
-    .logo-text {
-        font-size: 20px;
-    }
-    
-    .social-section {
-        margin-top: 30px;
-        width: 100%;
-    }
-    
-    .social-buttons {
-        gap: 16px;
-    }
-    
-    .social-btn {
-        width: 52px;
-        height: 52px;
-    }
-    
-    .social-btn i {
-        font-size: 22px;
-    }
-
-    .video-section {
-        margin: 20px 0;
-    }
-
-    .youtube-video {
-        border-radius: 12px;
-    }
-
-    .site-footer {
-        margin-top: 30px;
-        padding: 25px 20px;
-    }
-
-    .footer-text {
-        font-size: 13px;
+    .cta-button {
+        padding: 16px 28px;
+        font-size: 18px;
     }
 }
 
-/* Optimizaciones adicionales para dispositivos muy pequeños */
-@media (max-width: 360px) {
-    .main-title {
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 15px;
+        margin-top: 30px;
+    }
+    
+    .main-title.mixed-style {
         font-size: clamp(28px, 6vw, 36px);
     }
-
-    .about-description {
-        font-size: 15px;
-        white-space: pre-line;
+    
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
     }
-
-    .about-description .signature {
-        font-size: 1.1em;
-        margin-top: 1em;
+    
+    .whatsapp-float i {
+        font-size: 26px;
     }
-
-    .social-buttons {
-        gap: 12px;
-    }
-
-    .social-btn {
-        width: 48px;
-        height: 48px;
-    }
-
-    .social-btn i {
-        font-size: 20px;
-    }
-
-    .cta-button {
-        padding: 10px 20px;
-        font-size: 15px;
-    }
-}
-
-/* Optimizaciones para pantallas grandes */
-@media (min-width: 1440px) {
-    .container {
-        max-width: 1200px;
-        gap: 60px;
-    }
-
-    .main-title {
-        font-size: clamp(64px, 8vw, 96px);
-    }
-
-    .about-container {
-        padding: 60px;
-        gap: 80px;
-    }
-
-    .about-description {
-        font-size: 22px;
-        line-height: 1.6;
-        white-space: pre-line;
-    }
-
-    .about-description .signature {
-        font-size: 1.15em;
-        margin-top: 1.8em;
-    }
-
-    .logo-container i {
-        font-size: 84px;
-    }
-
-    .social-btn {
-        width: 70px;
-        height: 70px;
-    }
-
-    .social-btn i {
-        font-size: 28px;
-    }
-
-    .main-title.mixed-style {
-        max-width: 1200px;
-        font-size: clamp(48px, 3.5vw, 80px);
-        line-height: 1.1;
-    }
-}
-
-.social-btn i {
-    font-size: 20px;
-}
-
-.apple-icon {
-    font-size: 0.8em;
-    margin-left: 0.1em;
-}
-
-.site-footer {
-    padding: 35px 0 20px 0;
-    margin-top: 40px;
 }
