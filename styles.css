@@ -74,6 +74,13 @@ body {
         6px 6px 25px #F4EEDE,
         -6px -6px 25px #F4EEDE,
         0 0 40px #F4EEDE;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
+}
+
+.main-title.mixed-style .bigger-text {
+    font-size: 1.4em;
+    font-weight: 800;
+    letter-spacing: -0.03em;
 }
 
 .main-title.mixed-style .highlight {
@@ -84,6 +91,7 @@ body {
         6px 6px 25px #F4EEDE,
         -6px -6px 25px #F4EEDE,
         0 0 40px #F4EEDE;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
 }
 
 .main-title.mixed-style .subtle {
@@ -96,17 +104,24 @@ body {
         6px 6px 25px #F4EEDE,
         -6px -6px 25px #F4EEDE,
         0 0 40px #F4EEDE;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
 }
 
 .main-title.mixed-style .apple-icon {
-    font-size: 0.85em;
+    display: inline-block;
+    font-size: 0.9em;
     vertical-align: middle;
-    margin-left: 5px;
+    margin-left: 8px;
     color: #51141B;
     text-shadow: 
         6px 6px 25px #F4EEDE,
         -6px -6px 25px #F4EEDE,
         0 0 40px #F4EEDE;
+    transition: transform 0.3s ease;
+}
+
+.main-title.mixed-style .apple-icon:hover {
+    transform: scale(1.2) rotate(10deg);
 }
 
 /* Video Section */
@@ -131,11 +146,14 @@ body {
 }
 
 .about-container {
-    background: rgba(244, 238, 222, 0.8);
+    background: #51141B;
     border-radius: 24px;
     padding: 40px;
     max-width: 1000px;
     margin: 0 auto;
+    box-shadow: 
+        0 15px 30px -10px rgba(81, 20, 27, 0.4),
+        0 8px 16px rgba(81, 20, 27, 0.2);
 }
 
 .about-logo {
@@ -153,12 +171,13 @@ body {
     width: 150px;
     height: auto;
     object-fit: contain;
+    filter: brightness(1.1);
 }
 
 .logo-text {
     font-family: 'Orelo Extended Trial', serif;
     font-size: 1.8rem;
-    color: #51141B;
+    color: #F4EEDE;
     letter-spacing: -0.02em;
 }
 
@@ -169,7 +188,7 @@ body {
 .about-title {
     font-family: 'Orelo Extended Trial', serif;
     font-size: 2.5rem;
-    color: #51141B;
+    color: #F4EEDE;
     margin-bottom: 20px;
     letter-spacing: -0.02em;
 }
@@ -178,17 +197,20 @@ body {
     font-family: 'Questrial', sans-serif;
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #51141B;
+    color: #F4EEDE;
     max-width: 800px;
     margin: 0 auto;
 }
 
 .about-description .signature {
     display: block;
-    margin-top: 20px;
+    margin-top: 25px;
     font-family: 'Orelo Extended Trial', serif;
-    font-size: 1.3rem;
-    color: #51141B;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #F4EEDE;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Social Media Section */
@@ -242,6 +264,7 @@ body {
     width: 100%;
     text-align: center;
     margin: 20px 0;
+    perspective: 1500px;
 }
 
 .cta-button {
@@ -249,19 +272,27 @@ body {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    padding: 18px 36px;
-    background: #51141B;
+    padding: 20px 40px;
+    background: linear-gradient(135deg, #e2ca74 0%, #d4b955 100%);
     border: none;
-    border-radius: 980px;
-    color: #F4EEDE;
+    border-radius: 15px;
+    color: #51141B;
     text-decoration: none;
     font-size: 20px;
-    font-weight: 600;
-    letter-spacing: -0.022em;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 24px rgba(81, 20, 27, 0.3);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 15px 30px -10px rgba(226, 202, 116, 0.6),
+        0 8px 16px rgba(81, 20, 27, 0.15),
+        0 -3px 8px rgba(255, 255, 255, 0.4) inset,
+        0 3px 6px rgba(81, 20, 27, 0.3) inset,
+        0 20px 40px -20px rgba(226, 202, 116, 0.9);
     position: relative;
+    transform-style: preserve-3d;
+    transform: translateZ(0);
     overflow: hidden;
+    text-shadow: 0 1px 2px rgba(81, 20, 27, 0.2);
 }
 
 .cta-button::before {
@@ -269,31 +300,63 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 100%);
+    transition: opacity 0.3s ease;
+}
+
+.cta-button::after {
+    content: '';
+    position: absolute;
+    width: 200%;
     height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(244, 238, 222, 0.1), transparent);
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
     transform: translateX(-100%);
-    transition: 0.5s;
+    transition: transform 0.6s ease;
 }
 
 .cta-button:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(81, 20, 27, 0.4);
-    background: #832530;
+    transform: translateY(-5px) translateZ(15px);
+    box-shadow: 
+        0 20px 40px -15px rgba(226, 202, 116, 0.8),
+        0 12px 20px rgba(81, 20, 27, 0.2),
+        0 -3px 8px rgba(255, 255, 255, 0.5) inset,
+        0 3px 6px rgba(81, 20, 27, 0.35) inset,
+        0 25px 50px -25px rgba(226, 202, 116, 1);
 }
 
-.cta-button:hover::before {
+.cta-button:hover::after {
     transform: translateX(100%);
 }
 
+.cta-button:active {
+    transform: translateY(2px) translateZ(0);
+    box-shadow: 
+        0 8px 16px -8px rgba(226, 202, 116, 0.5),
+        0 4px 8px rgba(81, 20, 27, 0.15),
+        0 -2px 4px rgba(255, 255, 255, 0.3) inset,
+        0 2px 3px rgba(81, 20, 27, 0.2) inset;
+}
+
 .cta-button i {
-    font-size: 22px;
-    color: #F4EEDE;
+    font-size: 26px;
+    color: #51141B;
     transition: transform 0.3s ease;
+    text-shadow: 0 1px 2px rgba(81, 20, 27, 0.2);
+    font-weight: 900;
 }
 
 .cta-button:hover i {
-    transform: scale(1.2) rotate(10deg);
+    transform: scale(1.3) rotate(10deg);
 }
 
 /* WhatsApp Float */
@@ -411,6 +474,10 @@ body {
         font-size: clamp(28px, 6vw, 36px);
     }
     
+    .main-title.mixed-style .apple-icon {
+        font-size: 0.8em;
+    }
+    
     .whatsapp-float {
         width: 50px;
         height: 50px;
@@ -420,5 +487,27 @@ body {
     
     .whatsapp-float i {
         font-size: 26px;
+    }
+    
+    .cta-button {
+        padding: 16px 32px;
+        font-size: 18px;
+    }
+    
+    .cta-button i {
+        font-size: 22px;
+    }
+    
+    .about-container {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+
+    .about-description {
+        font-size: 1rem;
+    }
+
+    .about-description .signature {
+        font-size: 1.3rem;
     }
 }
