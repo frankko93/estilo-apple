@@ -366,12 +366,13 @@ body {
     letter-spacing: 0.8px;
 }
 
-.cta-button:hover::after {
-    opacity: 0.7;
+.cta-button:hover span,
+.cta-button:hover i {
+    filter: drop-shadow(0 2px 2px rgba(244, 238, 222, 0.7));
 }
 
-.cta-button:hover::before {
-    left: 100%;
+.cta-button:hover i {
+    transform: scale(1.15) rotate(5deg);
 }
 
 .cta-button:active {
@@ -380,10 +381,6 @@ body {
         0 6px 15px rgba(200, 176, 88, 0.3),
         0 3px 8px rgba(143, 127, 67, 0.2),
         inset 0 2px 3px rgba(255, 255, 255, 0.3);
-}
-
-.cta-button:hover i {
-    transform: scale(1.15) rotate(5deg);
 }
 
 /* WhatsApp Float */
@@ -466,24 +463,17 @@ body {
     .cta-button {
         padding: 18px 35px;
         font-size: clamp(18px, 2.5vw, 20px);
-        background: linear-gradient(135deg, 
-            #C8B058 0%,
-            #BAAA71 65%,
-            #C8B058 100%
-        );
-        color: #51141B;
-        text-shadow: 
-            1.5px 1.5px 3px #F4EEDE,
-            -1.5px -1.5px 3px #F4EEDE,
-            0 0 6px #F4EEDE;
     }
 
-    .cta-button:hover {
+    .cta-button span,
+    .cta-button i {
         background: linear-gradient(135deg, 
-            #BAAA71 0%,
-            #C8B058 50%,
-            #BAAA71 100%
+            #51141B 0%,
+            #732D37 100%
         );
+        -webkit-background-clip: text;
+        background-clip: text;
+        filter: drop-shadow(0 1px 1px rgba(244, 238, 222, 0.6));
     }
 }
 
@@ -520,32 +510,21 @@ body {
         font-size: clamp(14px, 2.5vw, 16px);
         gap: 8px;
         white-space: nowrap;
+    }
+
+    .cta-button span,
+    .cta-button i {
         background: linear-gradient(135deg, 
-            #C8B058 0%,
-            #BAAA71 65%,
-            #C8B058 100%
+            #51141B 0%,
+            #732D37 100%
         );
-        color: #51141B;
-        text-shadow: 
-            1px 1px 2px #F4EEDE,
-            -1px -1px 2px #F4EEDE,
-            0 0 5px #F4EEDE;
+        -webkit-background-clip: text;
+        background-clip: text;
+        filter: drop-shadow(0 1px 1px rgba(244, 238, 222, 0.5));
     }
 
     .cta-button i {
         font-size: 1.1em;
-        text-shadow: 
-            1px 1px 2px #F4EEDE,
-            -1px -1px 2px #F4EEDE,
-            0 0 5px #F4EEDE;
-    }
-
-    .cta-button:hover {
-        background: linear-gradient(135deg, 
-            #BAAA71 0%,
-            #C8B058 50%,
-            #BAAA71 100%
-        );
     }
 }
 
@@ -554,13 +533,14 @@ body {
         padding: 12px 16px;
         font-size: 14px;
         gap: 6px;
-        text-shadow: 
-            1px 1px 2px #F4EEDE,
-            -1px -1px 2px #F4EEDE,
-            0 0 4px #F4EEDE;
     }
 
     .cta-button i {
         font-size: 1em;
+    }
+
+    .cta-button span,
+    .cta-button i {
+        filter: drop-shadow(0 1px 1px rgba(244, 238, 222, 0.4));
     }
 }
