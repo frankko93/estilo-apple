@@ -30,8 +30,8 @@
     <meta property="twitter:image" content="../images/logo1.png">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../images/logo1.png">
-    <link rel="apple-touch-icon" href="../images/logo1.png">
+    <link rel="icon" type="image/png" href="../images/logo-page.png">
+    <link rel="apple-touch-icon" href="../images/logo-page.png">
     
     <!-- Custom Fonts -->
     <link href="https://fonts.cdnfonts.com/css/orelo-extended-trial" rel="stylesheet">
@@ -70,13 +70,21 @@
         
         <!-- Video Section -->
         <div class="video-section" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
-            <iframe 
-                src="https://www.youtube.com/embed/wWFhVCJxdaA?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&showinfo=0" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            <iframe
+                id="vimeoPlayer"
+                class="youtube-video"
+                src="https://player.vimeo.com/video/1108807864?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1&controls=1&title=0&byline=0&portrait=0&dnt=1"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                loading="lazy"
                 allowfullscreen
-                class="youtube-video">
+                title="Estilo VSL">
             </iframe>
+            <button id="unmuteButton" class="unmute-overlay" aria-label="Activar sonido">
+                <i class="fa-solid fa-volume-high"></i>
+                <span>Activar sonido</span>
+            </button>
         </div>
         
         <!-- CTA Section -->
@@ -141,6 +149,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
         }
 
         .youtube-video {
@@ -148,6 +157,63 @@
             aspect-ratio: 21/9;
             border-radius: 18px;
             box-shadow: 0 0 100px rgba(76, 19, 27, 0.3);
+        }
+
+        .unmute-overlay {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 999px;
+            font-family: "Questrial", system-ui, -apple-system, sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 5;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .unmute-overlay:hover {
+            background: rgba(0, 0, 0, 0.7);
+            transform: translate(-50%, -50%) scale(1.03);
+        }
+
+        @media (max-width: 640px) {
+            .unmute-overlay {
+                font-size: 14px;
+                padding: 10px 14px;
+            }
+        }
+
+        /* Make video larger on mobile/tablet with full-bleed layout */
+        @media (max-width: 1024px) {
+            .youtube-video {
+                aspect-ratio: 18/9;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .video-section {
+                padding: 0;
+                max-width: none;
+                /* full-bleed: extend to viewport edges even inside centered container */
+                margin-left: calc(50% - 50vw);
+                margin-right: calc(50% - 50vw);
+            }
+
+            .youtube-video {
+                aspect-ratio: 16/9;
+                border-radius: 8px;
+                box-shadow: 0 0 60px rgba(76, 19, 27, 0.28);
+            }
         }
     </style>
 
@@ -160,6 +226,77 @@
             offset: 100, // offset (in px) from the original trigger point
             duration: 1000, // values from 0 to 3000, with step 50ms
             easing: 'ease', // default easing for AOS animations
+        });
+    </script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        // Show an overlay to enable sound due to browser autoplay policies (Vimeo)
+        document.addEventListener('DOMContentLoaded', function handleSoundOverlayInit() {
+            var unmuteButton = document.getElementById('unmuteButton');
+            var vimeoIframe = document.getElementById('vimeoPlayer');
+
+            if (!unmuteButton) return;
+
+            function show(button) {
+                button.style.display = 'flex';
+            }
+            function hide(button) {
+                button.style.display = 'none';
+            }
+
+            if (vimeoIframe && window.Vimeo && typeof window.Vimeo.Player === 'function') {
+                var player = new window.Vimeo.Player(vimeoIframe);
+
+                function updateOverlayFromState() {
+                    Promise.all([
+                        player.getMuted().catch(function () { return false; }),
+                        player.getVolume().catch(function () { return 0; })
+                    ]).then(function (results) {
+                        var isMuted = !!results[0];
+                        var volume = results[1];
+                        if (isMuted || volume === 0) {
+                            show(unmuteButton);
+                        } else {
+                            hide(unmuteButton);
+                        }
+                    }).catch(function () {
+                        // On failure, keep overlay visible to allow manual enable
+                        show(unmuteButton);
+                    });
+                }
+
+                function enableSoundAndPlayVimeo() {
+                    player.setMuted(false)
+                        .then(function () { return player.setVolume(1); })
+                        .then(function () { return player.play(); })
+                        .catch(function () {
+                            // If play fails, user can press native controls
+                        })
+                        .finally(function () { hide(unmuteButton); });
+                }
+
+                // Initial state
+                updateOverlayFromState();
+
+                // Bind interactions
+                unmuteButton.addEventListener('click', enableSoundAndPlayVimeo, { passive: true });
+                unmuteButton.addEventListener('touchstart', enableSoundAndPlayVimeo, { passive: true });
+
+                var attemptedGlobalEnable = false;
+                function attemptGlobalEnable() {
+                    if (attemptedGlobalEnable) return;
+                    attemptedGlobalEnable = true;
+                    enableSoundAndPlayVimeo();
+                    document.removeEventListener('click', attemptGlobalEnable);
+                    document.removeEventListener('touchstart', attemptGlobalEnable);
+                }
+                document.addEventListener('click', attemptGlobalEnable, { passive: true });
+                document.addEventListener('touchstart', attemptGlobalEnable, { passive: true });
+
+                // Keep overlay in sync with volume changes
+                player.on('volumechange', updateOverlayFromState);
+                player.on('play', updateOverlayFromState);
+            }
         });
     </script>
 </body>

@@ -226,6 +226,8 @@ body {
 
 .about-description .signature {
     font-size: clamp(1.2rem, 3vw, 1.5rem);
+    display: block;
+    margin-top: 1rem;
 }
 
 /* Social Media Section */
@@ -498,6 +500,8 @@ body {
 
     .about-description .signature {
         font-size: 1.3rem;
+        display: block;
+        margin-top: 1rem;
     }
 
     .cta-section {
