@@ -71,9 +71,9 @@
         <!-- Video Section -->
         <div class="video-section" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
             <iframe
-                id="vimeoPlayer"
+                id="youtubePlayer"
                 class="youtube-video"
-                src="https://player.vimeo.com/video/1108807864?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1&controls=1&title=0&byline=0&portrait=0&dnt=1"
+                src="https://www.youtube.com/embed/vBFfE1kgAX8?autoplay=1&mute=1&controls=1&loop=1&playlist=vBFfE1kgAX8&rel=0&modestbranding=1&showinfo=0&enablejsapi=1"
                 frameborder="0"
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                 referrerpolicy="strict-origin-when-cross-origin"
@@ -228,13 +228,26 @@
             easing: 'ease', // default easing for AOS animations
         });
     </script>
-    <script src="https://player.vimeo.com/api/player.js"></script>
-    <script>
-        // Show an overlay to enable sound due to browser autoplay policies (Vimeo)
-        document.addEventListener('DOMContentLoaded', function handleSoundOverlayInit() {
-            var unmuteButton = document.getElementById('unmuteButton');
-            var vimeoIframe = document.getElementById('vimeoPlayer');
 
+    <!-- YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        var player;
+        var unmuteButton;
+
+        // YouTube API ready callback
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtubePlayer', {
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            unmuteButton = document.getElementById('unmuteButton');
+            
             if (!unmuteButton) return;
 
             function show(button) {
@@ -244,60 +257,36 @@
                 button.style.display = 'none';
             }
 
-            if (vimeoIframe && window.Vimeo && typeof window.Vimeo.Player === 'function') {
-                var player = new window.Vimeo.Player(vimeoIframe);
+            // Show unmute button initially since YouTube starts muted
+            show(unmuteButton);
 
-                function updateOverlayFromState() {
-                    Promise.all([
-                        player.getMuted().catch(function () { return false; }),
-                        player.getVolume().catch(function () { return 0; })
-                    ]).then(function (results) {
-                        var isMuted = !!results[0];
-                        var volume = results[1];
-                        if (isMuted || volume === 0) {
-                            show(unmuteButton);
-                        } else {
-                            hide(unmuteButton);
-                        }
-                    }).catch(function () {
-                        // On failure, keep overlay visible to allow manual enable
-                        show(unmuteButton);
-                    });
+            function enableSoundYoutube() {
+                if (player && typeof player.unMute === 'function') {
+                    player.unMute();
+                    player.setVolume(100);
                 }
-
-                function enableSoundAndPlayVimeo() {
-                    player.setMuted(false)
-                        .then(function () { return player.setVolume(1); })
-                        .then(function () { return player.play(); })
-                        .catch(function () {
-                            // If play fails, user can press native controls
-                        })
-                        .finally(function () { hide(unmuteButton); });
-                }
-
-                // Initial state
-                updateOverlayFromState();
-
-                // Bind interactions
-                unmuteButton.addEventListener('click', enableSoundAndPlayVimeo, { passive: true });
-                unmuteButton.addEventListener('touchstart', enableSoundAndPlayVimeo, { passive: true });
-
-                var attemptedGlobalEnable = false;
-                function attemptGlobalEnable() {
-                    if (attemptedGlobalEnable) return;
-                    attemptedGlobalEnable = true;
-                    enableSoundAndPlayVimeo();
-                    document.removeEventListener('click', attemptGlobalEnable);
-                    document.removeEventListener('touchstart', attemptGlobalEnable);
-                }
-                document.addEventListener('click', attemptGlobalEnable, { passive: true });
-                document.addEventListener('touchstart', attemptGlobalEnable, { passive: true });
-
-                // Keep overlay in sync with volume changes
-                player.on('volumechange', updateOverlayFromState);
-                player.on('play', updateOverlayFromState);
+                hide(unmuteButton);
             }
-        });
+
+            // Bind interactions
+            unmuteButton.addEventListener('click', enableSoundYoutube, { passive: true });
+            unmuteButton.addEventListener('touchstart', enableSoundYoutube, { passive: true });
+
+            var attemptedGlobalEnable = false;
+            function attemptGlobalEnable() {
+                if (attemptedGlobalEnable) return;
+                attemptedGlobalEnable = true;
+                enableSoundYoutube();
+                document.removeEventListener('click', attemptGlobalEnable);
+                document.removeEventListener('touchstart', attemptGlobalEnable);
+            }
+            document.addEventListener('click', attemptGlobalEnable, { passive: true });
+            document.addEventListener('touchstart', attemptGlobalEnable, { passive: true });
+        }
+
+        function onPlayerStateChange(event) {
+            // Optional: Handle player state changes if needed
+        }
     </script>
 </body>
 </html> 
