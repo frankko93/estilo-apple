@@ -26,7 +26,7 @@ a, button, .social-btn, .cta-button, .main-title.mixed-style .apple-icon {
 }
 
 body {
-    background: url('images/hero.png') no-repeat center center fixed;
+    background: url('./images/hero.png') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -38,7 +38,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: url('images/hero.png') no-repeat center center;
+    background: url('./images/hero.png') no-repeat center center;
     background-size: cover;
 }
 
@@ -68,7 +68,7 @@ body {
 
 /* Main Title */
 .main-title {
-    font-family: 'Orelo Extended Trial', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(48px, 8vw, 96px);
     font-weight: 500;
     color: #51141B;
@@ -210,7 +210,7 @@ body {
 }
 
 .logo-text {
-    font-family: 'Orelo Extended Trial', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
     color: #F4EEDE;
     letter-spacing: -0.02em;
@@ -221,7 +221,7 @@ body {
 }
 
 .about-title {
-    font-family: 'Orelo Extended Trial', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     color: #F4EEDE;
     margin-bottom: 20px;
@@ -575,7 +575,7 @@ body {
 }
 
 .methodology-title {
-    font-family: 'Orelo Extended Trial', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(2.2rem, 4.5vw, 3.5rem);
     color: #51141B;
     margin-bottom: 15px;
@@ -772,7 +772,7 @@ body {
 }
 
 .testimonials-title {
-    font-family: 'Orelo Extended Trial', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 4vw, 3rem);
     color: #51141B;
     margin-bottom: 50px;
@@ -1092,7 +1092,7 @@ body {
 }
 
 .brands-title {
-    font-family: 'Orelo Extended Trial', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 4vw, 3rem);
     color: #51141B;
     margin-bottom: 40px;
