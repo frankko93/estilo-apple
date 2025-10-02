@@ -73,7 +73,7 @@ body {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 30px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -467,6 +467,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+
     .about-container {
         padding: 25px;
         margin: 0 8px;
@@ -497,7 +501,7 @@ body {
 
 @media (max-width: 425px) {
     .container {
-        padding: 0 12px;
+        padding: 0 15px;
     }
 
     .about-section {
@@ -796,7 +800,7 @@ body {
 
 .testimonials-track {
     display: flex;
-    transition: transform 0.5s ease;
+    transition: transform 1s ease;
     width: 400%; /* 4 testimonios */
     gap: 0;
 }
@@ -811,6 +815,17 @@ body {
     box-shadow: 
         0 15px 30px -10px rgba(81, 20, 27, 0.4),
         0 8px 16px rgba(81, 20, 27, 0.2);
+    transform: scale(1);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.testimonial-card:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 20px 40px -10px rgba(81, 20, 27, 0.5),
+        0 12px 20px rgba(81, 20, 27, 0.3);
+    border-color: rgba(200, 176, 88, 0.5);
 }
 
 .testimonial-content {
@@ -1061,23 +1076,44 @@ body {
 
 .cta-section-2 {
     margin-top: 70px;
+    text-align: center;
+}
+
+.cta-text-2 {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    line-height: 1.4;
+    color: var(--primary-light);
+    margin-bottom: 25px;
+    font-weight: 600;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 50%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .cta-button-2 {
     display: inline-flex;
     align-items: center;
     gap: 15px;
-    padding: 20px 40px;
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    font-weight: 600;
+    padding: 18px 35px;
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    font-weight: 700;
     text-decoration: none;
     background: linear-gradient(135deg, var(--whatsapp-green) 0%, var(--whatsapp-green-dark) 100%);
     color: #FFF;
     border-radius: 50px;
     transition: all 0.4s ease;
     box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-    max-width: 600px;
+    max-width: 300px;
     text-align: center;
+    justify-content: center;
 }
 
 .cta-button-2:hover {
@@ -1230,7 +1266,7 @@ body {
 
     .testimonials-track {
         display: flex;
-        transition: transform 0.5s ease;
+        transition: transform 1s ease;
         width: 400%;
         gap: 0;
     }
@@ -1240,6 +1276,11 @@ body {
         padding: 25px 15px;
         margin-bottom: 0;
         flex-shrink: 0;
+        transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+        transform: scale(1.03);
     }
 
     .testimonial-text {
@@ -1288,11 +1329,18 @@ body {
         text-align: center;
     }
 
+    .cta-text-2 {
+        font-size: clamp(1.2rem, 2.6vw, 1.4rem);
+        margin-bottom: 20px;
+        padding: 0 10px;
+        letter-spacing: 0.3px;
+    }
+
     .cta-button-2 {
-        padding: 18px 25px;
+        padding: 16px 30px;
         gap: 12px;
-        max-width: 100%;
-        font-size: clamp(1rem, 2.2vw, 1.2rem);
+        max-width: 250px;
+        font-size: clamp(1rem, 2.2vw, 1.1rem);
     }
 
     .brands-grid {
@@ -1371,6 +1419,11 @@ body {
     .testimonial-card {
         padding: 20px 10px;
         min-height: 200px;
+        transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+        transform: scale(1.02);
     }
 
     .testimonial-content {
@@ -1432,9 +1485,18 @@ body {
         padding: 15px 20px;
     }
 
+    .cta-text-2 {
+        font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+        margin-bottom: 18px;
+        padding: 0 5px;
+        letter-spacing: 0.2px;
+    }
+
     .cta-button-2 {
-        padding: 15px 20px;
+        padding: 15px 25px;
         gap: 10px;
+        max-width: 220px;
+        font-size: clamp(0.95rem, 2vw, 1rem);
     }
 
     .brands-grid {

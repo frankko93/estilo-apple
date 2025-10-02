@@ -304,9 +304,10 @@
 
 
                 <div class="cta-section-2" data-aos="fade-up" data-aos-delay="500">
+                    <p class="cta-text-2">Tu iPhone merece lo mejor. Consultanos ahora y volvé a disfrutarlo como nuevo.</p>
                     <a href="https://wa.me/message/URPJOMQIADZMP1" target="_blank" class="cta-button-2">
                         <i class="fab fa-whatsapp"></i>
-                        <span>Tu iPhone merece lo mejor. Consultanos ahora y volvé a disfrutarlo como nuevo.</span>
+                        <span>CONSULTANOS</span>
                     </a>
                 </div>
             </div>
@@ -327,7 +328,7 @@
                         <img src="./images/apple.png" alt="Apple Genuine" class="brand-logo">
                     </div>
                     <div class="brand-item" data-aos="zoom-in" data-aos-delay="700">
-                        <img src="./images/wuzip.png" alt="Wuzip" class="brand-logo">
+                        <img src="./images/wuzip2.png" alt="Wuzip" class="brand-logo">
                     </div>
                     <div class="brand-item" data-aos="zoom-in" data-aos-delay="800">
                         <img src="./images/jcid.png" alt="Jcid" class="brand-logo">
@@ -492,7 +493,7 @@
         }
     </script>
 
-    <!-- Testimonials Carousel JavaScript - Simple -->
+    <!-- Testimonials Carousel JavaScript - Fixed and Enhanced -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const track = document.querySelector('.testimonials-track');
@@ -500,57 +501,112 @@
             const indicators = document.querySelectorAll('.indicator');
             const prevBtn = document.querySelector('.testimonial-nav.prev');
             const nextBtn = document.querySelector('.testimonial-nav.next');
+            const carousel = document.querySelector('.testimonials-carousel');
+            
+            if (!track || !cards.length) return; // Safety check
             
             let currentSlide = 0;
             const totalSlides = cards.length;
+            let autoSlideInterval = null;
+            let isTransitioning = false;
 
             function updateCarousel() {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                
                 // Mover el track para mostrar el testimonio actual
-                track.style.transform = `translateX(-${currentSlide * 25}%)`;
+                const translateValue = -(currentSlide * 25);
+                track.style.transform = `translateX(${translateValue}%)`;
                 
                 // Update indicators
                 indicators.forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === currentSlide);
+                    if (indicator) {
+                        indicator.classList.toggle('active', index === currentSlide);
+                    }
                 });
+                
+                // Reset transition flag after animation completes
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 1000); // Match CSS transition duration
             }
 
             function nextSlide() {
+                if (isTransitioning) return;
                 currentSlide = (currentSlide + 1) % totalSlides;
                 updateCarousel();
             }
 
             function prevSlide() {
+                if (isTransitioning) return;
                 currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
                 updateCarousel();
             }
 
             function goToSlide(slideIndex) {
+                if (isTransitioning || slideIndex === currentSlide) return;
                 currentSlide = slideIndex;
                 updateCarousel();
             }
 
-            // Event listeners
-            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            // Auto-advance functions
+            function startAutoSlide() {
+                if (autoSlideInterval) return; // Prevent multiple intervals
+                autoSlideInterval = setInterval(() => {
+                    if (!isTransitioning) {
+                        nextSlide();
+                    }
+                }, 4000); // Slightly slower for better UX
+            }
+
+            function stopAutoSlide() {
+                if (autoSlideInterval) {
+                    clearInterval(autoSlideInterval);
+                    autoSlideInterval = null;
+                }
+            }
+
+            // Event listeners with debouncing
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    stopAutoSlide();
+                    nextSlide();
+                    setTimeout(startAutoSlide, 2000); // Resume after 2s
+                });
+            }
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    stopAutoSlide();
+                    prevSlide();
+                    setTimeout(startAutoSlide, 2000); // Resume after 2s
+                });
+            }
             
             indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => goToSlide(index));
+                if (indicator) {
+                    indicator.addEventListener('click', () => {
+                        stopAutoSlide();
+                        goToSlide(index);
+                        setTimeout(startAutoSlide, 2000); // Resume after 2s
+                    });
+                }
             });
 
-            // Inicializar
-            updateCarousel();
-
-            // Auto-advance carousel every 5 seconds
-            setInterval(nextSlide, 5000);
+            // Hover pause/resume functionality
+            if (carousel) {
+                carousel.addEventListener('mouseenter', stopAutoSlide);
+                carousel.addEventListener('mouseleave', startAutoSlide);
+            }
 
             // Touch/swipe support
             let startX = 0;
             let endX = 0;
-            const carousel = document.querySelector('.testimonials-carousel');
             
             if (carousel) {
                 carousel.addEventListener('touchstart', (e) => {
                     startX = e.touches[0].clientX;
+                    stopAutoSlide();
                 });
 
                 carousel.addEventListener('touchend', (e) => {
@@ -564,8 +620,17 @@
                             prevSlide(); // Swipe right
                         }
                     }
+                    
+                    setTimeout(startAutoSlide, 2000); // Resume after 2s
                 });
             }
+
+            // Initialize
+            updateCarousel();
+            startAutoSlide();
+            
+            // Debug info (remove in production)
+            console.log(`Testimonials carousel initialized with ${totalSlides} slides`);
         });
     </script>
 </body>
