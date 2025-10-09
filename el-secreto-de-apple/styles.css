@@ -943,12 +943,12 @@ body {
 .testimonials-track {
     display: flex;
     transition: transform 1s ease;
-    width: 400%; /* 4 testimonios */
+    width: 500%; /* 5 testimonios */
     gap: 0;
 }
 
 .testimonial-card {
-    width: 25%; /* Cada card ocupa 25% para mostrar 1 a la vez */
+    width: 20%; /* Cada card ocupa 20% para mostrar 1 a la vez */
     padding: 40px 20px;
     flex-shrink: 0;
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--gradient-primary) 100%);
@@ -1409,12 +1409,12 @@ body {
     .testimonials-track {
         display: flex;
         transition: transform 1s ease;
-        width: 400%;
+        width: 500%;
         gap: 0;
     }
 
     .testimonial-card {
-        width: 25%;
+        width: 20%;
         padding: 25px 15px;
         margin-bottom: 0;
         flex-shrink: 0;
