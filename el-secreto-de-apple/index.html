@@ -88,17 +88,15 @@
         
         <!-- Video Section -->
         <div class="video-section" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
-            <iframe
-                id="youtubePlayer"
-                class="youtube-video"
-                src="https://www.youtube.com/embed/vBFfE1kgAX8?autoplay=1&mute=1&controls=1&loop=1&playlist=vBFfE1kgAX8&rel=0&modestbranding=1&showinfo=0&enablejsapi=1"
-                frameborder="0"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                loading="lazy"
-                allowfullscreen
-                title="Estilo VSL">
-            </iframe>
+            <div class="wistia_responsive_padding" style="padding:42.5% 0 0 0;position:relative;">
+                <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                    <div class="wistia_embed wistia_async_jyg1tx6zze videoFoam=true autoPlay=true muted=true controlsVisibleOnLoad=true playbar=true volumeControl=true fullscreenButton=true playButton=true" style="height:100%;position:relative;width:100%">
+                        <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                            <img src="https://fast.wistia.com/embed/medias/jyg1tx6zze/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
             <button id="unmuteButton" class="unmute-overlay" aria-label="Activar sonido">
                 <i class="fa-solid fa-volume-high"></i>
                 <span>Activar sonido</span>
@@ -389,10 +387,9 @@
             position: relative;
         }
 
-        .youtube-video {
-            width: 100%;
-            aspect-ratio: 21/9;
+        .wistia_responsive_padding {
             border-radius: 18px;
+            overflow: hidden;
             box-shadow: 0 0 100px rgba(76, 19, 27, 0.3);
         }
 
@@ -432,8 +429,8 @@
 
         /* Make video larger on mobile/tablet with full-bleed layout */
         @media (max-width: 1024px) {
-            .youtube-video {
-                aspect-ratio: 18/9;
+            .wistia_responsive_padding {
+                padding: 50% 0 0 0 !important;
             }
         }
 
@@ -446,8 +443,8 @@
                 margin-right: calc(50% - 50vw);
             }
 
-            .youtube-video {
-                aspect-ratio: 16/9;
+            .wistia_responsive_padding {
+                padding: 56.25% 0 0 0 !important;
                 border-radius: 8px;
                 box-shadow: 0 0 60px rgba(76, 19, 27, 0.28);
             }
@@ -466,64 +463,64 @@
         });
     </script>
 
-    <!-- YouTube IFrame API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
+    <!-- Wistia Embed Scripts -->
+    <script src="https://fast.wistia.com/embed/medias/jyg1tx6zze.jsonp" async></script>
+    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
     <script>
-        var player;
-        var unmuteButton;
+        window._wq = window._wq || [];
+        _wq.push({
+            id: "jyg1tx6zze",
+            onReady: function(video) {
+                var unmuteButton = document.getElementById('unmuteButton');
+                
+                if (!unmuteButton) return;
 
-        // YouTube API ready callback
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('youtubePlayer', {
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
+                function show(button) {
+                    button.style.display = 'flex';
                 }
-            });
-        }
-
-        function onPlayerReady(event) {
-            unmuteButton = document.getElementById('unmuteButton');
-            
-            if (!unmuteButton) return;
-
-            function show(button) {
-                button.style.display = 'flex';
-            }
-            function hide(button) {
-                button.style.display = 'none';
-            }
-
-            // Show unmute button initially since YouTube starts muted
-            show(unmuteButton);
-
-            function enableSoundYoutube() {
-                if (player && typeof player.unMute === 'function') {
-                    player.unMute();
-                    player.setVolume(100);
+                function hide(button) {
+                    button.style.display = 'none';
                 }
-                hide(unmuteButton);
+
+                // Show unmute button initially since video starts muted
+                show(unmuteButton);
+
+                function enableSoundWistia() {
+                    video.unmute();
+                    video.volume(1);
+                    hide(unmuteButton);
+                }
+
+                // Bind interactions to unmute button
+                unmuteButton.addEventListener('click', enableSoundWistia, { passive: true });
+                unmuteButton.addEventListener('touchstart', enableSoundWistia, { passive: true });
+
+                // Hide button if user unmutes via Wistia controls
+                video.bind('volumechange', function(vol) {
+                    if (vol > 0 && !video.isMuted()) {
+                        hide(unmuteButton);
+                    }
+                });
+
+                // Hide button if user clicks on the video itself to unmute
+                video.bind('unmute', function() {
+                    hide(unmuteButton);
+                });
+
+                // Auto-enable sound on first user interaction (optional)
+                var attemptedGlobalEnable = false;
+                function attemptGlobalEnable() {
+                    if (attemptedGlobalEnable) return;
+                    attemptedGlobalEnable = true;
+                    enableSoundWistia();
+                    document.removeEventListener('click', attemptGlobalEnable);
+                    document.removeEventListener('touchstart', attemptGlobalEnable);
+                }
+                // Comment out the auto-enable to let users choose
+                // document.addEventListener('click', attemptGlobalEnable, { passive: true });
+                // document.addEventListener('touchstart', attemptGlobalEnable, { passive: true });
             }
-
-            // Bind interactions
-            unmuteButton.addEventListener('click', enableSoundYoutube, { passive: true });
-            unmuteButton.addEventListener('touchstart', enableSoundYoutube, { passive: true });
-
-            var attemptedGlobalEnable = false;
-            function attemptGlobalEnable() {
-                if (attemptedGlobalEnable) return;
-                attemptedGlobalEnable = true;
-                enableSoundYoutube();
-                document.removeEventListener('click', attemptGlobalEnable);
-                document.removeEventListener('touchstart', attemptGlobalEnable);
-            }
-            document.addEventListener('click', attemptGlobalEnable, { passive: true });
-            document.addEventListener('touchstart', attemptGlobalEnable, { passive: true });
-        }
-
-        function onPlayerStateChange(event) {
-            // Optional: Handle player state changes if needed
-        }
+        });
     </script>
 
     <!-- Testimonials Carousel JavaScript - Fixed and Enhanced -->
